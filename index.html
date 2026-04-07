@@ -3,192 +3,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webtronics — дорожная карта AI-автоматизации</title>
+  <title>Webtronics — Roadmap AI-автоматизации</title>
   <style>
     :root {
       --bg: #07101d;
-      --bg2: #0c1730;
-      --panel: rgba(14, 22, 42, 0.84);
-      --panel-2: rgba(11, 18, 34, 0.95);
-      --line: rgba(164, 186, 234, 0.16);
-      --text: #edf2ff;
-      --muted: #a1b0d2;
+      --bg2: #0b1730;
+      --panel: rgba(13, 21, 40, 0.84);
+      --panel2: rgba(10, 17, 32, 0.96);
+      --line: rgba(160, 183, 232, 0.16);
+      --text: #eef3ff;
+      --muted: #9faed1;
       --cyan: #7ef0c8;
-      --blue: #77a8ff;
-      --violet: #9a8dff;
-      --red: #ff7f96;
-      --amber: #ffca72;
+      --blue: #78abff;
+      --violet: #9a8fff;
+      --amber: #ffc96b;
+      --red: #ff7d96;
       --shadow: 0 24px 80px rgba(0,0,0,.38);
-      --radius: 26px;
+      --radius: 24px;
     }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(119,168,255,.18), transparent 26%),
-        radial-gradient(circle at 85% 8%, rgba(126,240,200,.12), transparent 18%),
+        radial-gradient(circle at top left, rgba(120,171,255,.18), transparent 25%),
+        radial-gradient(circle at 86% 8%, rgba(126,240,200,.12), transparent 18%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
-    .container { width: min(1260px, calc(100vw - 32px)); margin: 0 auto; }
+
+    .container { width: min(1360px, calc(100vw - 32px)); margin: 0 auto; }
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    .hero { padding: 72px 0 28px; }
+
+    .hero { padding: 68px 0 26px; }
     .hero-card, .section-card { padding: 34px; }
+
     .eyebrow {
       display: inline-block;
       color: var(--cyan);
       text-transform: uppercase;
       font-size: 12px;
-      font-weight: 800;
       letter-spacing: .16em;
+      font-weight: 800;
       margin-bottom: 16px;
     }
+
     h1 {
       margin: 0;
-      font-size: clamp(38px, 6vw, 68px);
+      font-size: clamp(40px, 6vw, 70px);
       line-height: .95;
       letter-spacing: -0.05em;
-      max-width: 1020px;
+      max-width: 1040px;
     }
+
     .sub {
       margin-top: 18px;
       color: var(--muted);
+      max-width: 980px;
       font-size: 18px;
-      line-height: 1.7;
-      max-width: 960px;
+      line-height: 1.72;
     }
+
     .metrics {
-      margin-top: 26px;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
+      margin-top: 26px;
     }
+
     .metric {
-      background: var(--panel-2);
+      background: var(--panel2);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 18px;
     }
+
     .metric .n { font-size: 30px; font-weight: 800; color: var(--cyan); margin-bottom: 8px; }
-    .metric .l { color: var(--muted); font-size: 14px; line-height: 1.5; }
-    section { padding: 16px 0; }
+    .metric .l { color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    section { padding: 14px 0; }
     h2 { margin: 0 0 12px; font-size: 28px; letter-spacing: -0.03em; }
-    .lead { color: var(--muted); line-height: 1.75; max-width: 980px; }
-    .priority-grid, .summary, .task-grid { display: grid; gap: 16px; margin-top: 18px; }
-    .priority-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .priority-box, .summary-box, .task {
-      background: var(--panel-2);
+    .lead { color: var(--muted); line-height: 1.75; max-width: 1020px; }
+
+    .boxes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .box, .note, .summary-box {
+      background: var(--panel2);
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 18px;
     }
-    .priority-box b { display: block; margin-bottom: 8px; }
 
-    .roadmap-wrap {
-      margin-top: 22px;
+    .box b, .note b { display: block; margin-bottom: 8px; }
+
+    .timeline-note {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+    }
+
+    .timeline-wrap {
+      margin-top: 20px;
       overflow-x: auto;
       padding-bottom: 8px;
     }
-    .roadmap {
-      min-width: 1320px;
-      display: grid;
-      grid-template-columns: 1fr 120px 1fr 120px 1fr 120px 1fr;
-      align-items: center;
-    }
-    .phase {
-      min-height: 430px;
-      background: var(--panel-2);
+
+    table {
+      width: 100%;
+      min-width: 1280px;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 22px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
+      background: var(--panel2);
     }
-    .phase-tag {
-      font-size: 12px;
-      font-weight: 800;
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #0d1830;
+      color: var(--text);
+      z-index: 1;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      margin-bottom: 10px;
-      display: inline-block;
+      letter-spacing: .08em;
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      white-space: nowrap;
     }
-    .k1 .phase-tag { color: var(--cyan); }
-    .k2 .phase-tag { color: var(--blue); }
-    .k3 .phase-tag { color: var(--violet); }
-    .k4 .phase-tag { color: var(--red); }
-    .phase h3 { margin: 0 0 8px; font-size: 26px; letter-spacing: -0.03em; }
-    .time { color: var(--amber); font-size: 14px; font-weight: 800; margin-bottom: 14px; }
-    .phase p { margin: 0 0 14px; color: var(--muted); line-height: 1.65; }
-    .phase ul { margin: 0; padding-left: 18px; line-height: 1.75; }
 
-    .arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .arrow-core {
-      width: 96px;
-      height: 96px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 58px;
-      font-weight: 900;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--line);
-      box-shadow: inset 0 0 24px rgba(255,255,255,.03), 0 18px 42px rgba(0,0,0,.24);
-      text-shadow: 0 0 24px currentColor;
-    }
-    .a1 .arrow-core { color: var(--cyan); }
-    .a2 .arrow-core { color: var(--blue); }
-    .a3 .arrow-core { color: var(--red); }
-
-    .legend {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .legend-item {
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
+    tbody td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(160,183,232,.1);
+      vertical-align: top;
       color: var(--muted);
       line-height: 1.6;
     }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody td:first-child { color: var(--text); font-weight: 700; width: 280px; }
+    tbody td:nth-child(2) { width: 220px; }
+    tbody td:nth-child(3) { width: 160px; color: var(--amber); font-weight: 700; }
+
+    .wk {
+      text-align: center;
+      font-weight: 800;
+      color: rgba(255,255,255,.18);
+      width: 68px;
+      min-width: 68px;
+      padding: 10px 6px;
+    }
+
+    .fill-cyan { background: rgba(126,240,200,.14); color: var(--cyan); }
+    .fill-blue { background: rgba(120,171,255,.14); color: var(--blue); }
+    .fill-violet { background: rgba(154,143,255,.14); color: var(--violet); }
+    .fill-red { background: rgba(255,125,150,.14); color: var(--red); }
+    .fill-amber { background: rgba(255,201,107,.12); color: var(--amber); }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .legend-item {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     .legend-item b { display: block; color: var(--text); margin-bottom: 6px; }
 
-    .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .badge {
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
+    .summary {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
     }
-    .high { color: var(--cyan); }
-    .mid { color: var(--blue); }
-    .late { color: var(--red); }
-    .task h3, .summary-box h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.03em; }
-    .task p { margin: 8px 0; color: var(--muted); line-height: 1.65; }
-    .task p b { color: var(--text); }
-    .summary { grid-template-columns: 1.2fr 1fr; }
-    .summary-box ol, .summary-box ul { margin: 0; padding-left: 18px; line-height: 1.75; }
-    .footer { text-align: center; color: var(--muted); font-size: 14px; padding: 20px 0 46px; }
+
+    .summary-box h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .summary-box ol, .summary-box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.75;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 18px 0 46px;
+    }
 
     @media (max-width: 980px) {
       .hero-card, .section-card { padding: 24px; }
-      .metrics, .priority-grid, .legend, .task-grid, .summary { grid-template-columns: 1fr; }
+      .metrics, .boxes, .timeline-note, .legend, .summary { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -197,202 +232,203 @@
     <section class="hero">
       <div class="card hero-card">
         <div class="eyebrow">Webtronics · AI Automation Roadmap</div>
-        <h1>Дорожная карта AI-автоматизации для Webtronics</h1>
+        <h1>Roadmap AI-автоматизации на первые 3–4 месяца</h1>
         <div class="sub">
-          Здесь порядок жёсткий: сначала собираем слой, который разгружает команду и убирает ручную рутину. Потом забираем продажи и клиентский сервис. SEO уходит целиком в последнюю очередь, вместе с тяжёлой аналитикой и сложными интеграциями.
+          Этот план показывает не список идей, а порядок работы по неделям. Так заказчик видит, что именно делается на каждой неделе, какие задачи идут параллельно и почему SEO не стоит в начале плана.
         </div>
         <div class="metrics">
-          <div class="metric"><div class="n">3–7 дней</div><div class="l">до первого заметного эффекта</div></div>
-          <div class="metric"><div class="n">2–4 недели</div><div class="l">на первую волну внедрений</div></div>
-          <div class="metric"><div class="n">1.5–2 месяца</div><div class="l">до рабочего automation-контура</div></div>
-          <div class="metric"><div class="n">4 этапа</div><div class="l">с очевидной последовательностью</div></div>
+          <div class="metric"><div class="n">12–16 недель</div><div class="l">горизонт дорожной карты</div></div>
+          <div class="metric"><div class="n">Недели 1–4</div><div class="l">операционка и снятие ручной нагрузки</div></div>
+          <div class="metric"><div class="n">Недели 5–8</div><div class="l">продажи и клиентский сервис</div></div>
+          <div class="metric"><div class="n">Недели 9+</div><div class="l">управленческий слой и хвостовая очередь</div></div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="card section-card">
-        <h2>Логика приоритетов</h2>
+        <h2>Как читать эту карту</h2>
         <div class="lead">
-          Заказчик явно показал, что SEO не должно стоять в начале. Значит план строится от прикладной пользы: сначала operational-задачи, потом продажи и клиентский сервис, затем управленческий слой. SEO и весь тяжёлый контур уходят в хвост дорожной карты.
+          Сайт больше не показывает «первый блок, который делается сразу целиком». Здесь всё разбито по неделям. Это значит, что каждая строка — отдельная задача или рабочий поток, а закрашенные недели показывают, когда мы реально берёмся за неё. SEO вынесено в последнюю очередь целиком, чтобы не создавать ложное ожидание, будто оно начнётся раньше основных задач.
         </div>
-        <div class="priority-grid">
-          <div class="priority-box"><b>Сначала operational</b> Документы, учёт, отчёты, шаблонные процессы и повторяющиеся действия.</div>
-          <div class="priority-box"><b>Потом продажи и сервис</b> КП, лиды, квалификация, клиентские чаты и скорость реакции.</div>
-          <div class="priority-box"><b>Потом SEO и heavy-layer</b> SEO-контент, мониторинг, отчётность, аналитика, телефония и рискованные механики.</div>
+        <div class="boxes">
+          <div class="box"><b>Сначала operational</b> Документы, учёт, отчёты, шаблонные действия, рутинные процессы.</div>
+          <div class="box"><b>Потом продажи и сервис</b> КП, лиды, клиентские чаты, маршрутизация и скорость реакции.</div>
+          <div class="box"><b>SEO позже</b> Весь SEO-блок, включая контент, мониторинг и отчёты, уходит в хвост плана.</div>
+        </div>
+        <div class="timeline-note">
+          <div class="note"><b>Что это даёт заказчику</b> Появляется нормальное ожидание по срокам. Никто не думает, что за 2 дня получит весь первый блок целиком.</div>
+          <div class="note"><b>Что это даёт нам</b> Можно показывать дорожку реализации, зависимости и приоритеты без путаницы и без завышенных ожиданий.</div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="card section-card">
-        <h2>Roadmap</h2>
-        <div class="roadmap-wrap">
-          <div class="roadmap">
-            <div class="phase k1">
-              <div class="phase-tag">Этап 1</div>
-              <h3>Быстрые внедрения</h3>
-              <div class="time">2–4 недели</div>
-              <p>Первый слой. Даёт быстрый эффект и снимает ручную нагрузку.</p>
-              <ul>
-                <li>Ежедневные отчёты Битрикс24</li>
-                <li>Массовая постановка задач</li>
-                <li>Автогенерация договоров</li>
-                <li>Счета, акты, УПД, сверки</li>
-                <li>Единый учёт первички</li>
-              </ul>
-            </div>
-            <div class="arrow a1" aria-hidden="true"><div class="arrow-core">→</div></div>
-            <div class="phase k2">
-              <div class="phase-tag">Этап 2</div>
-              <h3>Продажи и сервис</h3>
-              <div class="time">3–6 недель</div>
-              <p>Второй слой. Здесь задачи уже ближе к деньгам, сделке и качеству работы с клиентом.</p>
-              <ul>
-                <li>Генератор коммерческих предложений</li>
-                <li>Квалификация входящих лидов</li>
-                <li>Мониторинг клиентских чатов</li>
-                <li>Эскалация аккаунту по правилам</li>
-              </ul>
-            </div>
-            <div class="arrow a2" aria-hidden="true"><div class="arrow-core">→</div></div>
-            <div class="phase k3">
-              <div class="phase-tag">Этап 3</div>
-              <h3>Управленческий слой</h3>
-              <div class="time">4–8 недель</div>
-              <p>Третий слой. Здесь появляется дополнительная прозрачность и контроль, когда база уже работает.</p>
-              <ul>
-                <li>Расширенные сводки и контроль просрочек</li>
-                <li>Контуры согласования и маршрутизации</li>
-                <li>Единый слой управленческих данных</li>
-              </ul>
-            </div>
-            <div class="arrow a3" aria-hidden="true"><div class="arrow-core">→</div></div>
-            <div class="phase k4">
-              <div class="phase-tag">Этап 4</div>
-              <h3>Последняя очередь</h3>
-              <div class="time">1–3 месяца и дальше</div>
-              <p>Здесь лежит весь тяжёлый и вторичный слой. SEO уходит сюда целиком.</p>
-              <ul>
-                <li>Весь SEO-блок целиком</li>
-                <li>SEO-контент и публикация</li>
-                <li>SEO-мониторинг и отчёты</li>
-                <li>P&amp;L, Cash Flow, маржинальность</li>
-                <li>Холодные звонки, исходящий outreach, ПФ</li>
-              </ul>
-            </div>
-          </div>
+        <h2>План по неделям</h2>
+        <div class="timeline-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Задача</th>
+                <th>Что делаем</th>
+                <th>Очередь</th>
+                <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
+                <th>W5</th><th>W6</th><th>W7</th><th>W8</th>
+                <th>W9</th><th>W10</th><th>W11</th><th>W12</th>
+                <th>W13</th><th>W14</th><th>W15</th><th>W16</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ежедневные отчёты Битрикс24</td>
+                <td>Сводка по выполнению, просрочкам и зависшим задачам.</td>
+                <td>Первая очередь</td>
+                <td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Массовая постановка задач</td>
+                <td>Шаблонные пакеты задач для клиентов и проектов.</td>
+                <td>Первая очередь</td>
+                <td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Автогенерация договоров</td>
+                <td>Шаблонные договоры из данных сделки.</td>
+                <td>Первая очередь</td>
+                <td class="wk"></td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Счета, акты, УПД, сверки</td>
+                <td>Автоматизация закрывающих документов.</td>
+                <td>Первая очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td>
+                <td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Единый учёт первички</td>
+                <td>Контур хранения и контроля документов.</td>
+                <td>Первая очередь</td>
+                <td class="wk"></td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td><td class="wk fill-cyan">●</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Генератор КП</td>
+                <td>Черновик КП из вводных менеджера.</td>
+                <td>Вторая очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk fill-blue">●</td>
+                <td class="wk fill-blue">●</td><td class="wk fill-blue">●</td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Квалификация входящих лидов</td>
+                <td>Первичные вопросы, маршрутизация и отсев слабого входа.</td>
+                <td>Вторая очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk fill-blue">●</td><td class="wk fill-blue">●</td><td class="wk fill-blue">●</td><td class="wk fill-blue">●</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Мониторинг клиентских чатов</td>
+                <td>Контекст, подсказки, эскалация аккаунту.</td>
+                <td>Вторая очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk fill-blue">●</td><td class="wk fill-blue">●</td><td class="wk fill-blue">●</td>
+                <td class="wk fill-blue">●</td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Расширенные управленческие сводки</td>
+                <td>Контроль просрочек, маршрутизация и единый слой данных.</td>
+                <td>Третья очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk fill-violet">●</td>
+                <td class="wk fill-violet">●</td><td class="wk fill-violet">●</td><td class="wk fill-violet">●</td><td class="wk fill-violet">●</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Весь SEO-блок</td>
+                <td>Контент, публикация, семантика, мониторинг, SEO-отчёты.</td>
+                <td>Последняя очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk fill-red">●</td>
+                <td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk fill-red">●</td>
+              </tr>
+              <tr>
+                <td>P&amp;L, Cash Flow, маржинальность</td>
+                <td>Финансовая и управленческая аналитика.</td>
+                <td>Последняя очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk fill-red">●</td><td class="wk fill-red">●</td>
+                <td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk"></td><td class="wk"></td>
+              </tr>
+              <tr>
+                <td>Исходящий leadgen / холодные звонки / ПФ</td>
+                <td>Тяжёлый и рискованный слой, который не ставим в начало.</td>
+                <td>Последняя очередь</td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+                <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk fill-red">●</td>
+                <td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk fill-red">●</td><td class="wk fill-red">●</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="legend">
-          <div class="legend-item"><b>Этап 1</b> Быстрый результат и разгрузка команды.</div>
-          <div class="legend-item"><b>Этап 2</b> Продажи, лиды и клиентский сервис.</div>
-          <div class="legend-item"><b>Этап 3</b> Управляемость и слой контроля.</div>
-          <div class="legend-item"><b>Этап 4</b> SEO, аналитика и тяжёлые интеграции.</div>
+          <div class="legend-item"><b>Первая очередь</b> Быстрые внедрения, которые снимают ручную рутину.</div>
+          <div class="legend-item"><b>Вторая очередь</b> Продажи и клиентский сервис.</div>
+          <div class="legend-item"><b>Третья очередь</b> Управленческий слой и расширенный контроль.</div>
+          <div class="legend-item"><b>Последняя очередь</b> SEO целиком, аналитика и тяжёлые интеграции.</div>
+          <div class="legend-item"><b>Закрашенная неделя</b> Период активной реализации задачи.</div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="card section-card">
-        <h2>Что делаем сначала</h2>
-        <div class="task-grid">
-          <div class="task">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–5 дней</span></div>
-            <h3>Ежедневные отчёты по Битрикс24</h3>
-            <p><b>Что делаем:</b> короткая сводка по выполненным задачам, просрочкам и зависшим блокам.</p>
-            <p><b>Что даёт:</b> руководитель получает картину дня без ручного просмотра всей системы.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–7 дней</span></div>
-            <h3>Массовая постановка задач</h3>
-            <p><b>Что делаем:</b> типовые пакеты задач запускаются по шаблону.</p>
-            <p><b>Что даёт:</b> PM и аккаунты перестают тратить время на повторяющуюся ручную работу.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">5–7 дней</span></div>
-            <h3>Автогенерация договоров</h3>
-            <p><b>Что делаем:</b> шаблонные договоры собираются из данных сделки.</p>
-            <p><b>Что даёт:</b> меньше времени на документы и меньше ошибок на копипасте.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Счета, акты, УПД, сверки</h3>
-            <p><b>Что делаем:</b> автоматизируем пакет закрывающих документов.</p>
-            <p><b>Что даёт:</b> снимаем самую вязкую бюрократию с команды.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–5 дней</span></div>
-            <h3>Единый учёт первички</h3>
-            <p><b>Что делаем:</b> собираем единый контур хранения и контроля документов.</p>
-            <p><b>Что даёт:</b> порядок в документах и основа для следующего слоя.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge mid">Следующий шаг</span><span class="badge">1–2 недели</span></div>
-            <h3>Генератор КП</h3>
-            <p><b>Что делаем:</b> собираем коммерческие предложения из вводных менеджера.</p>
-            <p><b>Что даёт:</b> ускоряем продажи и сокращаем время на ручную сборку КП.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card section-card">
-        <h2>Что идёт в последнюю очередь</h2>
-        <div class="task-grid">
-          <div class="task">
-            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">1–3 месяца+</span></div>
-            <h3>Весь SEO-блок</h3>
-            <p><b>Сюда входит:</b> анализ конкурентов, SEO-тексты, коммерческие факторы, публикация на сайт, семантика, кластеризация, SEO-отчёты и мониторинг.</p>
-            <p><b>Почему позже:</b> этот блок важный, но он не закрывает первую прикладную боль заказчика.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">4–8 недель</span></div>
-            <h3>P&amp;L, Cash Flow, маржинальность</h3>
-            <p><b>Почему позже:</b> такие вещи имеют смысл только после наведения порядка в операционном слое и данных.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">1–2 месяца</span></div>
-            <h3>Исходящий leadgen</h3>
-            <p><b>Почему позже:</b> сначала надо выровнять входящие процессы и клиентский сервис.</p>
-          </div>
-          <div class="task">
-            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">2–3 месяца</span></div>
-            <h3>Холодные звонки, ПФ и рискованные механики</h3>
-            <p><b>Почему позже:</b> здесь много риска и мало смысла тянуть этот слой в начало проекта.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card section-card">
-        <h2>Резюме</h2>
+        <h2>Резюме для заказчика</h2>
         <div class="summary">
           <div class="summary-box">
-            <h3>Топ-5 стартовых задач</h3>
+            <h3>Что получаем в первые 4 недели</h3>
             <ol>
-              <li>Ежедневные отчёты по Битриксу</li>
-              <li>Массовая постановка задач</li>
-              <li>Автогенерация договоров</li>
-              <li>Закрывающие документы</li>
+              <li>Контур ежедневных отчётов</li>
+              <li>Шаблонную постановку задач</li>
+              <li>Автогенерацию договоров</li>
+              <li>Первые автоматизации по закрывающим документам</li>
               <li>Единый учёт первички</li>
             </ol>
           </div>
           <div class="summary-box">
-            <h3>Сроки</h3>
+            <h3>Что важно понимать</h3>
             <ul>
-              <li><b>3–7 дней</b> — первый заметный эффект</li>
-              <li><b>2–4 недели</b> — первая волна внедрений</li>
-              <li><b>1.5–2 месяца</b> — рабочий контур</li>
-              <li><b>SEO и тяжёлый слой</b> — после базы</li>
+              <li>Roadmap показывает порядок по неделям, а не «весь блок сразу».</li>
+              <li>Часть задач идёт параллельно.</li>
+              <li>SEO начинается только в последней очереди.</li>
+              <li>Горизонт плана — первые 3–4 месяца.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="footer">Webtronics AI Roadmap · версия с явными стрелками и SEO в последней очереди.</div>
+    <div class="footer">Webtronics AI Roadmap · версия с недельной дорожной картой на 12–16 недель.</div>
   </div>
 </body>
 </html>
