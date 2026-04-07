@@ -6,535 +6,393 @@
   <title>Webtronics — дорожная карта AI-автоматизации</title>
   <style>
     :root {
-      --bg: #0b1020;
-      --panel: rgba(20, 28, 52, 0.72);
-      --panel-2: rgba(13, 19, 37, 0.82);
-      --text: #e9eefc;
-      --muted: #9fb0d4;
-      --line: rgba(157, 178, 230, 0.16);
-      --accent: #6ea8fe;
-      --accent-2: #7ef0c8;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 24px;
+      --bg: #07101d;
+      --bg2: #0c1730;
+      --panel: rgba(14, 22, 42, 0.84);
+      --panel-2: rgba(11, 18, 34, 0.95);
+      --line: rgba(164, 186, 234, 0.16);
+      --text: #edf2ff;
+      --muted: #a1b0d2;
+      --cyan: #7ef0c8;
+      --blue: #77a8ff;
+      --violet: #9a8dff;
+      --red: #ff7f96;
+      --amber: #ffca72;
+      --shadow: 0 24px 80px rgba(0,0,0,.38);
+      --radius: 26px;
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(62, 109, 255, .22), transparent 28%),
-        radial-gradient(circle at top right, rgba(0, 208, 160, .12), transparent 20%),
-        linear-gradient(180deg, #09101c 0%, #0b1020 100%);
+        radial-gradient(circle at top left, rgba(119,168,255,.18), transparent 26%),
+        radial-gradient(circle at 85% 8%, rgba(126,240,200,.12), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
-
-    .container {
-      width: min(1180px, calc(100vw - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      padding: 72px 0 40px;
-    }
-
-    .hero-card, .section-card, .task-card, .phase-card {
+    .container { width: min(1260px, calc(100vw - 32px)); margin: 0 auto; }
+    .card {
       background: var(--panel);
       border: 1px solid var(--line);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-radius: var(--radius);
     }
-
-    .hero-card {
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .hero { padding: 72px 0 28px; }
+    .hero-card, .section-card { padding: 34px; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent-2);
-      font-size: 13px;
-      letter-spacing: .12em;
+      display: inline-block;
+      color: var(--cyan);
       text-transform: uppercase;
-      margin-bottom: 18px;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      margin-bottom: 16px;
     }
-
     h1 {
       margin: 0;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: .98;
-      max-width: 900px;
-      letter-spacing: -0.04em;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: .95;
+      letter-spacing: -0.05em;
+      max-width: 1020px;
     }
-
     .sub {
-      margin-top: 20px;
-      max-width: 860px;
+      margin-top: 18px;
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.65;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-    }
-
-    .stat .k {
-      color: var(--accent-2);
-      font-weight: 800;
-      font-size: 28px;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat .v {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    section {
-      padding: 18px 0;
-    }
-
-    .section-card {
-      padding: 30px;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      letter-spacing: -0.03em;
-    }
-
-    .lead {
-      color: var(--muted);
       line-height: 1.7;
-      font-size: 16px;
-      max-width: 920px;
+      max-width: 960px;
     }
-
-    .principles {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .pill {
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-    }
-
-    .pill b {
-      display: block;
-      margin-bottom: 8px;
-      color: #fff;
-      font-size: 16px;
-    }
-
-    .timeline {
+    .metrics {
+      margin-top: 26px;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
+    }
+    .metric {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .metric .n { font-size: 30px; font-weight: 800; color: var(--cyan); margin-bottom: 8px; }
+    .metric .l { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    section { padding: 16px 0; }
+    h2 { margin: 0 0 12px; font-size: 28px; letter-spacing: -0.03em; }
+    .lead { color: var(--muted); line-height: 1.75; max-width: 980px; }
+    .priority-grid, .summary, .task-grid { display: grid; gap: 16px; margin-top: 18px; }
+    .priority-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .priority-box, .summary-box, .task {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+    }
+    .priority-box b { display: block; margin-bottom: 8px; }
+
+    .roadmap-wrap {
+      margin-top: 22px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .roadmap {
+      min-width: 1320px;
+      display: grid;
+      grid-template-columns: 1fr 120px 1fr 120px 1fr 120px 1fr;
+      align-items: center;
+    }
+    .phase {
+      min-height: 430px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .phase-tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .k1 .phase-tag { color: var(--cyan); }
+    .k2 .phase-tag { color: var(--blue); }
+    .k3 .phase-tag { color: var(--violet); }
+    .k4 .phase-tag { color: var(--red); }
+    .phase h3 { margin: 0 0 8px; font-size: 26px; letter-spacing: -0.03em; }
+    .time { color: var(--amber); font-size: 14px; font-weight: 800; margin-bottom: 14px; }
+    .phase p { margin: 0 0 14px; color: var(--muted); line-height: 1.65; }
+    .phase ul { margin: 0; padding-left: 18px; line-height: 1.75; }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .arrow-core {
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 58px;
+      font-weight: 900;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 24px rgba(255,255,255,.03), 0 18px 42px rgba(0,0,0,.24);
+      text-shadow: 0 0 24px currentColor;
+    }
+    .a1 .arrow-core { color: var(--cyan); }
+    .a2 .arrow-core { color: var(--blue); }
+    .a3 .arrow-core { color: var(--red); }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
       margin-top: 18px;
     }
-
-    .phase-card {
-      padding: 22px;
-      min-height: 220px;
-    }
-
-    .phase-num {
-      color: var(--accent-2);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .phase-card h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.03em;
-    }
-
-    .phase-card p {
+    .legend-item {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
       color: var(--muted);
-      margin: 0 0 12px;
-      line-height: 1.65;
-    }
-
-    .phase-card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--text);
       line-height: 1.6;
     }
+    .legend-item b { display: block; color: var(--text); margin-bottom: 6px; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .task-card {
-      padding: 22px;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
+    .task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
     .badge {
       padding: 7px 10px;
       border-radius: 999px;
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .02em;
+      font-weight: 800;
       border: 1px solid var(--line);
-      color: var(--text);
       background: rgba(255,255,255,.04);
     }
-
-    .badge.high { background: rgba(126,240,200,.1); color: #7ef0c8; }
-    .badge.mid { background: rgba(110,168,254,.1); color: #8dbbff; }
-    .badge.low { background: rgba(255,255,255,.05); color: #c5d4f7; }
-
-    .task-card h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.03em;
-    }
-
-    .task-card p {
-      margin: 8px 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .task-card p b { color: var(--text); }
-
-    .summary-list {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .summary-box {
-      padding: 24px;
-      border-radius: 20px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-    }
-
-    .summary-box h3 {
-      margin: 0 0 12px;
-      font-size: 22px;
-    }
-
-    .summary-box ol, .summary-box ul {
-      margin: 0;
-      padding-left: 18px;
-      line-height: 1.7;
-      color: var(--text);
-    }
-
-    .footer {
-      padding: 24px 0 48px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 14px;
-    }
+    .high { color: var(--cyan); }
+    .mid { color: var(--blue); }
+    .late { color: var(--red); }
+    .task h3, .summary-box h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.03em; }
+    .task p { margin: 8px 0; color: var(--muted); line-height: 1.65; }
+    .task p b { color: var(--text); }
+    .summary { grid-template-columns: 1.2fr 1fr; }
+    .summary-box ol, .summary-box ul { margin: 0; padding-left: 18px; line-height: 1.75; }
+    .footer { text-align: center; color: var(--muted); font-size: 14px; padding: 20px 0 46px; }
 
     @media (max-width: 980px) {
-      .stats, .timeline, .principles, .grid, .summary-list {
-        grid-template-columns: 1fr;
-      }
       .hero-card, .section-card { padding: 24px; }
+      .metrics, .priority-grid, .legend, .task-grid, .summary { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <section class="hero">
-      <div class="hero-card">
+      <div class="card hero-card">
         <div class="eyebrow">Webtronics · AI Automation Roadmap</div>
-        <h1>Дорожная карта AI-автоматизации Webtronics</h1>
+        <h1>Дорожная карта AI-автоматизации для Webtronics</h1>
         <div class="sub">
-          Порядок здесь простой: сначала убираем ручную рутину, которая жрёт время команды. Потом усиливаем продажи и клиентский сервис. Дальше — SEO-производство. Сложную аналитику, тяжёлые интеграции и рискованные механики оставляем на тот момент, когда база уже работает ровно.
+          Здесь порядок жёсткий: сначала собираем слой, который разгружает команду и убирает ручную рутину. Потом забираем продажи и клиентский сервис. SEO уходит целиком в последнюю очередь, вместе с тяжёлой аналитикой и сложными интеграциями.
         </div>
-        <div class="stats">
-          <div class="stat"><div class="k">3–7 дней</div><div class="v">до первого полезного результата</div></div>
-          <div class="stat"><div class="k">2–4 недели</div><div class="v">на первую очередь</div></div>
-          <div class="stat"><div class="k">1.5–2 месяца</div><div class="v">до рабочего production-контура</div></div>
-          <div class="stat"><div class="k">4 этапа</div><div class="v">от операционки к системе</div></div>
+        <div class="metrics">
+          <div class="metric"><div class="n">3–7 дней</div><div class="l">до первого заметного эффекта</div></div>
+          <div class="metric"><div class="n">2–4 недели</div><div class="l">на первую волну внедрений</div></div>
+          <div class="metric"><div class="n">1.5–2 месяца</div><div class="l">до рабочего automation-контура</div></div>
+          <div class="metric"><div class="n">4 этапа</div><div class="l">с очевидной последовательностью</div></div>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-card">
-        <h2>Принцип приоритизации</h2>
+      <div class="card section-card">
+        <h2>Логика приоритетов</h2>
         <div class="lead">
-          После уточнения от заказчика приоритет выстроен без фантазий. В начале стоят задачи, которые разгружают операционку, дают контроль и убирают ручную возню. Следом — продажи и клиентский контур. Потом — SEO и контент, где есть смысл масштабировать производство. В конце — тяжёлый слой: аналитика, сложные интеграции и всё, что требует чистых данных, зрелого процесса и спокойной головы.
+          Заказчик явно показал, что SEO не должно стоять в начале. Значит план строится от прикладной пользы: сначала operational-задачи, потом продажи и клиентский сервис, затем управленческий слой. SEO и весь тяжёлый контур уходят в хвост дорожной карты.
         </div>
-        <div class="principles">
-          <div class="pill"><b>Сначала то, что разгружает команду</b> Документы, отчёты, шаблонные действия, постановка задач. Здесь эффект быстрый и понятный.</div>
-          <div class="pill"><b>Потом то, что влияет на деньги</b> КП, лиды, скорость реакции, клиентские чаты, качество обработки входящих.</div>
-          <div class="pill"><b>Потом то, что масштабирует производство</b> SEO, контент, публикация, визуалы, аналитика конкурентов.</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-card">
-        <h2>Roadmap по этапам</h2>
-        <div class="timeline">
-          <div class="phase-card">
-            <div class="phase-num">Этап 1</div>
-            <h3>Операционная разгрузка</h3>
-            <p>2–4 недели. Наводим порядок в рутине и возвращаем управляемость.</p>
-            <ul>
-              <li>Ежедневные отчёты по Битрикс24</li>
-              <li>Массовая постановка задач</li>
-              <li>Шаблонные договоры</li>
-              <li>Счета, акты, УПД, сверки</li>
-              <li>Учёт первички</li>
-            </ul>
-          </div>
-          <div class="phase-card">
-            <div class="phase-num">Этап 2</div>
-            <h3>Продажи и клиентский контур</h3>
-            <p>3–6 недель. Ускоряем то, что ближе всего к сделке и качеству сервиса.</p>
-            <ul>
-              <li>Генератор коммерческих предложений</li>
-              <li>Квалификация входящих лидов</li>
-              <li>Мониторинг клиентских чатов</li>
-            </ul>
-          </div>
-          <div class="phase-card">
-            <div class="phase-num">Этап 3</div>
-            <h3>SEO-производство</h3>
-            <p>4–8 недель. Ставим на поток то, что Webtronics делает руками каждый день.</p>
-            <ul>
-              <li>Анализ конкурентов</li>
-              <li>SEO-тексты</li>
-              <li>Коммерческие факторы</li>
-              <li>Генерация изображений</li>
-              <li>Публикация на сайт</li>
-            </ul>
-          </div>
-          <div class="phase-card">
-            <div class="phase-num">Этап 4</div>
-            <h3>Тяжёлый слой</h3>
-            <p>1–3 месяца+. Сюда идут задачи, где цена ошибки выше, а вход дороже.</p>
-            <ul>
-              <li>P&amp;L / Cash Flow / маржинальность</li>
-              <li>SEO-мониторинг и автоотчёты</li>
-              <li>Исходящий leadgen</li>
-              <li>Холодные звонки</li>
-              <li>ПФ и внешние ссылки</li>
-            </ul>
-          </div>
+        <div class="priority-grid">
+          <div class="priority-box"><b>Сначала operational</b> Документы, учёт, отчёты, шаблонные процессы и повторяющиеся действия.</div>
+          <div class="priority-box"><b>Потом продажи и сервис</b> КП, лиды, квалификация, клиентские чаты и скорость реакции.</div>
+          <div class="priority-box"><b>Потом SEO и heavy-layer</b> SEO-контент, мониторинг, отчётность, аналитика, телефония и рискованные механики.</div>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-card">
-        <h2>Первая очередь — что делать сначала</h2>
-        <div class="grid">
-          <div class="task-card">
+      <div class="card section-card">
+        <h2>Roadmap</h2>
+        <div class="roadmap-wrap">
+          <div class="roadmap">
+            <div class="phase k1">
+              <div class="phase-tag">Этап 1</div>
+              <h3>Быстрые внедрения</h3>
+              <div class="time">2–4 недели</div>
+              <p>Первый слой. Даёт быстрый эффект и снимает ручную нагрузку.</p>
+              <ul>
+                <li>Ежедневные отчёты Битрикс24</li>
+                <li>Массовая постановка задач</li>
+                <li>Автогенерация договоров</li>
+                <li>Счета, акты, УПД, сверки</li>
+                <li>Единый учёт первички</li>
+              </ul>
+            </div>
+            <div class="arrow a1" aria-hidden="true"><div class="arrow-core">→</div></div>
+            <div class="phase k2">
+              <div class="phase-tag">Этап 2</div>
+              <h3>Продажи и сервис</h3>
+              <div class="time">3–6 недель</div>
+              <p>Второй слой. Здесь задачи уже ближе к деньгам, сделке и качеству работы с клиентом.</p>
+              <ul>
+                <li>Генератор коммерческих предложений</li>
+                <li>Квалификация входящих лидов</li>
+                <li>Мониторинг клиентских чатов</li>
+                <li>Эскалация аккаунту по правилам</li>
+              </ul>
+            </div>
+            <div class="arrow a2" aria-hidden="true"><div class="arrow-core">→</div></div>
+            <div class="phase k3">
+              <div class="phase-tag">Этап 3</div>
+              <h3>Управленческий слой</h3>
+              <div class="time">4–8 недель</div>
+              <p>Третий слой. Здесь появляется дополнительная прозрачность и контроль, когда база уже работает.</p>
+              <ul>
+                <li>Расширенные сводки и контроль просрочек</li>
+                <li>Контуры согласования и маршрутизации</li>
+                <li>Единый слой управленческих данных</li>
+              </ul>
+            </div>
+            <div class="arrow a3" aria-hidden="true"><div class="arrow-core">→</div></div>
+            <div class="phase k4">
+              <div class="phase-tag">Этап 4</div>
+              <h3>Последняя очередь</h3>
+              <div class="time">1–3 месяца и дальше</div>
+              <p>Здесь лежит весь тяжёлый и вторичный слой. SEO уходит сюда целиком.</p>
+              <ul>
+                <li>Весь SEO-блок целиком</li>
+                <li>SEO-контент и публикация</li>
+                <li>SEO-мониторинг и отчёты</li>
+                <li>P&amp;L, Cash Flow, маржинальность</li>
+                <li>Холодные звонки, исходящий outreach, ПФ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><b>Этап 1</b> Быстрый результат и разгрузка команды.</div>
+          <div class="legend-item"><b>Этап 2</b> Продажи, лиды и клиентский сервис.</div>
+          <div class="legend-item"><b>Этап 3</b> Управляемость и слой контроля.</div>
+          <div class="legend-item"><b>Этап 4</b> SEO, аналитика и тяжёлые интеграции.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card section-card">
+        <h2>Что делаем сначала</h2>
+        <div class="task-grid">
+          <div class="task">
             <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–5 дней</span></div>
             <h3>Ежедневные отчёты по Битрикс24</h3>
-            <p><b>Зачем:</b> каждое утро видеть, где работа идёт, где всё зависло и что уже вышло за срок.</p>
-            <p><b>Эффект:</b> руководитель быстрее понимает реальную картину без ручного просмотра CRM и чатов.</p>
-            <p><b>Зависимости:</b> задачи должны вестись в системе без творчества и серых зон.</p>
+            <p><b>Что делаем:</b> короткая сводка по выполненным задачам, просрочкам и зависшим блокам.</p>
+            <p><b>Что даёт:</b> руководитель получает картину дня без ручного просмотра всей системы.</p>
           </div>
-          <div class="task-card">
+          <div class="task">
             <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–7 дней</span></div>
             <h3>Массовая постановка задач</h3>
-            <p><b>Зачем:</b> снять с PM и аккаунтов рутину, которая повторяется из проекта в проект.</p>
-            <p><b>Эффект:</b> типовые процессы запускаются быстро и без ручной сборки каждой мелочи.</p>
-            <p><b>Зависимости:</b> нужно утвердить шаблоны задач и структуру этапов.</p>
+            <p><b>Что делаем:</b> типовые пакеты задач запускаются по шаблону.</p>
+            <p><b>Что даёт:</b> PM и аккаунты перестают тратить время на повторяющуюся ручную работу.</p>
           </div>
-          <div class="task-card">
+          <div class="task">
             <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">5–7 дней</span></div>
             <h3>Автогенерация договоров</h3>
-            <p><b>Зачем:</b> сократить время на шаблонные документы и убрать ручные ошибки.</p>
-            <p><b>Эффект:</b> бэк-офис тратит меньше времени на механику, а документы выходят ровнее.</p>
-            <p><b>Зависимости:</b> шаблоны, поля сделки, правила подстановки данных.</p>
+            <p><b>Что делаем:</b> шаблонные договоры собираются из данных сделки.</p>
+            <p><b>Что даёт:</b> меньше времени на документы и меньше ошибок на копипасте.</p>
           </div>
-          <div class="task-card">
+          <div class="task">
             <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Счета / акты / УПД / акты сверки</h3>
-            <p><b>Зачем:</b> убрать бумажную рутину, которая стабильно забирает время и внимание.</p>
-            <p><b>Эффект:</b> меньше бардака в закрывающих, меньше ручного труда, меньше мелких косяков.</p>
-            <p><b>Зависимости:</b> интеграция с CRM и учётной логикой.</p>
+            <h3>Счета, акты, УПД, сверки</h3>
+            <p><b>Что делаем:</b> автоматизируем пакет закрывающих документов.</p>
+            <p><b>Что даёт:</b> снимаем самую вязкую бюрократию с команды.</p>
           </div>
-          <div class="task-card">
+          <div class="task">
             <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">3–5 дней</span></div>
             <h3>Единый учёт первички</h3>
-            <p><b>Зачем:</b> без чистой первички дальше всё будет врать: и отчёты, и документы, и аналитика.</p>
-            <p><b>Эффект:</b> появляется единый контур документов и внятная база для следующих шагов.</p>
-            <p><b>Зависимости:</b> нужны правила хранения и ответственный процесс.</p>
+            <p><b>Что делаем:</b> собираем единый контур хранения и контроля документов.</p>
+            <p><b>Что даёт:</b> порядок в документах и основа для следующего слоя.</p>
           </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge high">Высокий приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Генератор коммерческих предложений</h3>
-            <p><b>Зачем:</b> ускорить сборку КП и убрать зависимость от ручного переписывания одних и тех же блоков.</p>
-            <p><b>Эффект:</b> менеджер получает готовую основу и быстрее доходит до отправки клиенту.</p>
-            <p><b>Зависимости:</b> шаблон структуры, прайс-логика, правила сборки оффера.</p>
+          <div class="task">
+            <div class="meta"><span class="badge mid">Следующий шаг</span><span class="badge">1–2 недели</span></div>
+            <h3>Генератор КП</h3>
+            <p><b>Что делаем:</b> собираем коммерческие предложения из вводных менеджера.</p>
+            <p><b>Что даёт:</b> ускоряем продажи и сокращаем время на ручную сборку КП.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-card">
-        <h2>Вторая очередь — продажи и клиентский сервис</h2>
-        <div class="grid">
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">2–4 недели</span></div>
-            <h3>Квалификация входящих лидов в чатах</h3>
-            <p><b>Зачем:</b> не терять входящие и не гонять менеджера по первичным вопросам вручную.</p>
-            <p><b>Эффект:</b> контакт быстрее доходит до осмысленного диалога, а не висит без движения.</p>
-            <p><b>Зависимости:</b> сценарии продаж, логика вопросов, критерии квалификации.</p>
+      <div class="card section-card">
+        <h2>Что идёт в последнюю очередь</h2>
+        <div class="task-grid">
+          <div class="task">
+            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">1–3 месяца+</span></div>
+            <h3>Весь SEO-блок</h3>
+            <p><b>Сюда входит:</b> анализ конкурентов, SEO-тексты, коммерческие факторы, публикация на сайт, семантика, кластеризация, SEO-отчёты и мониторинг.</p>
+            <p><b>Почему позже:</b> этот блок важный, но он не закрывает первую прикладную боль заказчика.</p>
           </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">3–6 недель</span></div>
-            <h3>Мониторинг клиентских чатов + эскалация</h3>
-            <p><b>Зачем:</b> видеть проблемные места в коммуникации до того, как клиент начнёт раздражаться вслух.</p>
-            <p><b>Эффект:</b> сервис становится ровнее, а аккаунт подключается туда, где это действительно нужно.</p>
-            <p><b>Зависимости:</b> база знаний, правила эскалации, понятные сигналы риска.</p>
+          <div class="task">
+            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">4–8 недель</span></div>
+            <h3>P&amp;L, Cash Flow, маржинальность</h3>
+            <p><b>Почему позже:</b> такие вещи имеют смысл только после наведения порядка в операционном слое и данных.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-card">
-        <h2>Третья очередь — SEO и контент</h2>
-        <div class="grid">
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Анализ конкурентов</h3>
-            <p><b>Зачем:</b> сократить время на ручной разбор и быстрее получать рабочие выводы для SEO.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Написание SEO-текстов</h3>
-            <p><b>Зачем:</b> увеличить выпуск контента без линейного роста команды.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Анализ коммерческих факторов</h3>
-            <p><b>Зачем:</b> быстро находить слабые места в страницах, офферах и структуре.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">3–7 дней</span></div>
-            <h3>Генерация изображений</h3>
-            <p><b>Зачем:</b> закрывать визуальную часть production без долгого цикла на каждую задачу.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">1–2 недели</span></div>
-            <h3>Тексты любого типа</h3>
-            <p><b>Зачем:</b> использовать один AI-слой не только в SEO, но и в контенте, письмах, описаниях, внутренних задачах.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge mid">Средний приоритет</span><span class="badge">1–3 недели</span></div>
-            <h3>Публикация на сайт</h3>
-            <p><b>Зачем:</b> убрать ручной разрыв между готовым материалом и выходом в прод.</p>
-            <p><b>Зависимости:</b> доступы к CMS и понятный процесс согласования.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-card">
-        <h2>Последняя очередь — тяжёлый и рискованный слой</h2>
-        <div class="grid">
-          <div class="task-card">
-            <div class="meta"><span class="badge low">Низкий приоритет</span><span class="badge">4–8 недель</span></div>
-            <h3>P&amp;L / Cash Flow / маржинальность</h3>
-            <p><b>Почему позже:</b> задача полезная, но требует чистых данных и аккуратной логики. С грязным входом она только создаст ложную уверенность.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge low">Низкий приоритет</span><span class="badge">4–8 недель</span></div>
-            <h3>SEO-мониторинг и автоотчёты</h3>
-            <p><b>Почему позже:</b> это уже следующий уровень зрелости. Сначала надо наладить производство и базовую управляемость.</p>
-          </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge low">Низкий приоритет</span><span class="badge">1–2 месяца</span></div>
+          <div class="task">
+            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">1–2 месяца</span></div>
             <h3>Исходящий leadgen</h3>
-            <p><b>Почему позже:</b> сначала стоит дожать входящий контур, сервис и упаковку. Потом уже масштабировать исходящую активность.</p>
+            <p><b>Почему позже:</b> сначала надо выровнять входящие процессы и клиентский сервис.</p>
           </div>
-          <div class="task-card">
-            <div class="meta"><span class="badge low">Низкий приоритет</span><span class="badge">2–3 месяца</span></div>
-            <h3>Холодные звонки и ПФ</h3>
-            <p><b>Почему позже:</b> тут высокий риск наломать дров. Такие задачи требуют отдельного внимания, контроля и трезвого момента.</p>
+          <div class="task">
+            <div class="meta"><span class="badge late">Последняя очередь</span><span class="badge">2–3 месяца</span></div>
+            <h3>Холодные звонки, ПФ и рискованные механики</h3>
+            <p><b>Почему позже:</b> здесь много риска и мало смысла тянуть этот слой в начало проекта.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="section-card">
-        <h2>Резюме для заказчика</h2>
-        <div class="summary-list">
+      <div class="card section-card">
+        <h2>Резюме</h2>
+        <div class="summary">
           <div class="summary-box">
-            <h3>Что даст эффект быстрее всего</h3>
+            <h3>Топ-5 стартовых задач</h3>
             <ol>
               <li>Ежедневные отчёты по Битриксу</li>
               <li>Массовая постановка задач</li>
-              <li>Автогенерация договоров и закрывающих</li>
-              <li>Генератор коммерческих предложений</li>
-              <li>Квалификация входящих лидов</li>
+              <li>Автогенерация договоров</li>
+              <li>Закрывающие документы</li>
+              <li>Единый учёт первички</li>
             </ol>
           </div>
           <div class="summary-box">
-            <h3>Реалистичный тайминг</h3>
+            <h3>Сроки</h3>
             <ul>
-              <li><b>3–7 дней</b> — первый полезный результат</li>
-              <li><b>2–4 недели</b> — первая очередь целиком</li>
-              <li><b>1.5–2 месяца</b> — рабочий automation layer</li>
-              <li><b>3–5 месяцев</b> — зрелый контур с тяжёлым слоем</li>
+              <li><b>3–7 дней</b> — первый заметный эффект</li>
+              <li><b>2–4 недели</b> — первая волна внедрений</li>
+              <li><b>1.5–2 месяца</b> — рабочий контур</li>
+              <li><b>SEO и тяжёлый слой</b> — после базы</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="footer">
-      Webtronics AI Roadmap · собран в виде одной страницы, чтобы заказчик открыл ссылку и сразу понял, что делать сначала, а что подождёт.
-    </div>
+    <div class="footer">Webtronics AI Roadmap · версия с явными стрелками и SEO в последней очереди.</div>
   </div>
 </body>
 </html>
